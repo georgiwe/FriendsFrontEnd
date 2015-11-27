@@ -2,11 +2,16 @@
   "name": "friends-front-end",
   "version": "1.0.0",
   "scripts": {
-    "start": "gulp serve"
+    "dev": "gulp dev"
   },
   "author": "Georgi Prodanov",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-sass": "^2.1.0",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0"
   }
 }
