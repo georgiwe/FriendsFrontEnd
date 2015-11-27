@@ -1,0 +1,12 @@
+{
+  "name": "friends-front-end",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "gulp serve"
+  },
+  "author": "Georgi Prodanov",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}

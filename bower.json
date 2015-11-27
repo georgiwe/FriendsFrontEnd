@@ -1,0 +1,17 @@
+{
+  "name": "friends-front-end",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Georgi Prodanov",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}
