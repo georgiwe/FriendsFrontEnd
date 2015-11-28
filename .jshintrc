@@ -27,6 +27,6 @@
 
 	"globals": {
 		"angular": true,
-		"_": true
+		"Everlive": true
 	}
 }

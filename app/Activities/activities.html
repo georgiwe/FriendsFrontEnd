@@ -1,3 +1,26 @@
 <section id="activities-wrapper">
 	<h1>Activities</h1>
+
+	<table class="table table-condensed table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Posted By</th>
+				<th>Posted On</th>
+				<th>Liked By</th>
+			</tr>
+		</thead>
+
+		<tbody ng-show="activities">
+			<tr class="activity" data-ng-repeat="activity in activities">
+				<td><img data-src="{{activity.Picture}}" data-responsive data-loading-image /></td>
+				<td>{{activity.CreatedBy}}</td>
+				<td>{{activity.CreatedAt | date}}</td>
+				<td>
+					<span data-ng-show="activity.Likes.length">{{activity.Likes | concat}}</span>
+					<span data-ng-hide="activity.Likes.length">No likes yet</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </section>

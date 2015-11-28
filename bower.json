@@ -14,6 +14,7 @@
     "angular": "~1.4.8",
     "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.6",
+    "everlive": "~1.5.8",
     "normalize-css": "~3.0.3"
   }
 }

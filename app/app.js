@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module('Friends', ['ui.router'])
+	.constant('API_KEY', 'DMcljujfrykFryWB')
+	.constant('LOADER_URL', '../assets/images/loader.gif')
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
 
@@ -14,7 +16,12 @@ angular.module('Friends', ['ui.router'])
 			.state('activities', {
 				url: '/activities',
 				templateUrl: 'app/activities/activities.html',
-				controller: 'ActivitiesCtrl'
+				controller: 'ActivitiesCtrl',
+				resolve: {
+					activities: ['activitiesData', function (activitiesData) {
+						return activitiesData.getAll();
+					}]
+				}
 			})
 
 			.state('users', {

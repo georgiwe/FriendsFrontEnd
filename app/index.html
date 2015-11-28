@@ -12,25 +12,35 @@
 		
 		<link rel="stylesheet" href="../assets/css/app.css">
 		<link rel="stylesheet" href="../assets/css/home.css">
+		<link rel="stylesheet" href="../assets/css/activities.css">
 	</head>
 
 	<body ng-app="Friends">
 
-		<script src="../bower_components/angular/angular.min.js"></script>
+		<script src="../bower_components/angular/angular.js"></script>
 		<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+		<script src="../bower_components/everlive/src/everlive.all.js"></script>
 
 		<script src="app/app.js"></script>
 
+		<script src="app/shared/concatFilter.js"></script>
+		<script src="app/shared/responsiveImg.js"></script>
+		<script src="app/shared/backendServices.js"></script>
+
 		<script src="app/home/homeCtrl.js"></script>
+
 		<script src="app/activities/activitiesCtrl.js"></script>
+		<script src="app/activities/activitiesData.js"></script>
+
 		<script src="app/users/usersCtrl.js"></script>
+
 		<script src="app/user/userCtrl.js"></script>
+
 
 		<nav id="navigation-pills" class="container" ng-include="'app/navbar/navbar.html'"></nav>
 
-		<section data-ui-view id="view-container" class="container">
-			
-		</section>
+		<section data-ui-view id="view-container" class="container"></section>
 
 	</body>
 </html>
