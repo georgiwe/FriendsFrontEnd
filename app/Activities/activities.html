@@ -1,26 +1,30 @@
 <section id="activities-wrapper">
 	<h1>Activities</h1>
 
-	<table class="table table-condensed table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Image</th>
-				<th>Posted By</th>
-				<th>Posted On</th>
-				<th>Liked By</th>
-			</tr>
-		</thead>
+	<ul class="list-group">
+		<li data-ng-if="!activities"><img class="spinner" alt="Loading spinner" src="../assets/images/loader.gif" /></li>
 
-		<tbody ng-show="activities">
-			<tr class="activity" data-ng-repeat="activity in activities">
-				<td><img data-src="{{activity.Picture}}" data-responsive data-loading-image /></td>
-				<td>{{activity.CreatedBy}}</td>
-				<td>{{activity.CreatedAt | date}}</td>
-				<td>
-					<span data-ng-show="activity.Likes.length">{{activity.Likes | concat}}</span>
+		<li class="list-group-item" data-ng-repeat="activity in activities">
+
+			<article class="activity">
+				<img class="col-md-3" data-ng-src="{{activity.Picture}}" alt="Activity picture" data-responsive data-loading-image />
+
+				<section class="col-md-9">
+					<h4 class="list-group-item-heading">{{activity.Text}}</h4>
+
+					<span data-ng-show="activity.Likes.length">Liked by {{activity.Likes | concat}}</span>
 					<span data-ng-hide="activity.Likes.length">No likes yet</span>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+				</section>
+
+				<footer>
+					<span class="author">
+						Created by 
+						<span class="author-name text-warning">{{activity.CreatedBy}}</span>
+						 on <span class="timestamp text-info">{{activity.CreatedAt | date : 'medium'}}</span>
+					</span>
+				</footer>
+			</article>
+
+		</li>
+	</ul>
 </section>

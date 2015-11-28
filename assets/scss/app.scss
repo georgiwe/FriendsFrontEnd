@@ -1,5 +1,13 @@
 @import '_base';
 
+body {
+	cursor: default;
+}
+
 #navigation-pills {
 	margin-bottom: 20px;
+}
+
+ul {
+	list-style-type: none;
 }

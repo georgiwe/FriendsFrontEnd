@@ -16,12 +16,7 @@ angular.module('Friends', ['ui.router'])
 			.state('activities', {
 				url: '/activities',
 				templateUrl: 'app/activities/activities.html',
-				controller: 'ActivitiesCtrl',
-				resolve: {
-					activities: ['activitiesData', function (activitiesData) {
-						return activitiesData.getAll();
-					}]
-				}
+				controller: 'ActivitiesCtrl'
 			})
 
 			.state('users', {

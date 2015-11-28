@@ -1,4 +1,12 @@
-@mixin noselect {
+.clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;		
+	}
+}
+
+.noselect {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -20,20 +28,20 @@
 	transform: $transform;
 }
 
-@mixin center-both {
+.center-both {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	@include transform(translate(-50%, -50%));
 }
 
-@mixin center-horizontally {
+.center-horizontally {
 	position: absolute;
 	left: 50%;
 	@include transform(translateX(-50%));
 }
 
-@mixin center-vertically {
+.center-vertically {
 	position: absolute;
 	top: 50%;
 	@include transform(translateY(-50%));
