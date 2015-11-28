@@ -2,7 +2,7 @@
   "name": "friends-front-end",
   "version": "1.0.0",
   "scripts": {
-    "dev": "gulp dev"
+    "start": "gulp dev"
   },
   "author": "Georgi Prodanov",
   "license": "MIT",
