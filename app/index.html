@@ -6,9 +6,10 @@
 		
 		<title>Friends</title>
 
-		<!-- build:css css/all.css -->
-		<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
 		<link rel="stylesheet" href="../assets/css/themes/journal.min.css" />
+
+		<!-- build:css css/combined.css -->
+		<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
 		
 		<link rel="stylesheet" href="../assets/css/app.css">
 		<link rel="stylesheet" href="../assets/css/home.css">
@@ -23,25 +24,25 @@
 		<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 		<script src="../bower_components/everlive/min/everlive.all.min.js"></script>
 
-		<!-- build:js js/body.js -->
-		<script src="app/app.js"></script>
+		<!-- build:js js/combined.js -->
+		<script src="app.js"></script>
 
-		<script src="app/shared/concatFilter.js"></script>
-		<script src="app/shared/responsiveImg.js"></script>
-		<script src="app/shared/backendServices.js"></script>
+		<script src="shared/concatFilter.js"></script>
+		<script src="shared/responsiveImg.js"></script>
+		<script src="shared/backendServices.js"></script>
 
-		<script src="app/home/homeCtrl.js"></script>
+		<script src="home/homeCtrl.js"></script>
 
-		<script src="app/activities/activitiesCtrl.js"></script>
-		<script src="app/activities/activitiesData.js"></script>
+		<script src="activities/activitiesCtrl.js"></script>
+		<script src="activities/activitiesData.js"></script>
 
-		<script src="app/users/usersCtrl.js"></script>
-		<script src="app/users/usersData.js"></script>
+		<script src="users/usersCtrl.js"></script>
+		<script src="users/usersData.js"></script>
 
-		<script src="app/user/userCtrl.js"></script>
+		<script src="user/userCtrl.js"></script>
 		<!-- endbuild -->
 
-		<nav id="navigation-pills" class="container" ng-include="'app/navbar/navbar.html'"></nav>
+		<nav id="navigation-pills" class="container" ng-include="'navbar/navbar.html'"></nav>
 		<section data-ui-view id="view-container" class="container"></section>
 
 	</body>

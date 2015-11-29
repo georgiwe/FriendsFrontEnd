@@ -10,25 +10,25 @@ angular.module('Friends', ['ui.router'])
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'app/home/home.html',
+				templateUrl: 'home/home.html',
 				controller: 'HomeCtrl'
 			})
 
 			.state('activities', {
 				url: '/activities',
-				templateUrl: 'app/activities/activities.html',
+				templateUrl: 'activities/activities.html',
 				controller: 'ActivitiesCtrl'
 			})
 
 			.state('users', {
 				url: '/users',
-				templateUrl: 'app/users/users.html',
+				templateUrl: 'users/users.html',
 				controller: 'UsersCtrl'
 			})
 
 			.state('user', {
 				url: '/user/:id',
-				templateUrl: 'app/user/user.html',
+				templateUrl: 'user/user.html',
 				controller: 'UserCtrl',
 				resolve: {
 					userId: ['$stateParams', function ($stateParams) {
