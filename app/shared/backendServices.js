@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_URL', 'MISSING_IMAGE_URL', function ($q, API_KEY, LOADER_URL, MISSING_IMAGE_URL) {
+angular.module('Friends').service('backendServices', ['$q', '$log', 'API_KEY', 'LOADER_URL', 'MISSING_IMAGE_URL', function ($q, $log, API_KEY, LOADER_URL, MISSING_IMAGE_URL) {
 	var backEnd = new Everlive({
 		apiKey: API_KEY,
 		caching: false,
 		helpers: {
 			html: {
-				processOnResize: true,
+				processOnResize: true, // to easily notice images are responsive
 				loadingImageUrl: LOADER_URL,
 				errorImageUrl: MISSING_IMAGE_URL
 			}
@@ -16,11 +16,7 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 	var htmlHelper = backEnd.helpers.html,
 		exposableProcessor = htmlHelper.process.bind(backEnd.helpers.html);
 
-	function getFileUri (fileId) {
-		return backEnd.Files.getDownloadUrl(fileId);
-	}
-
-	function query (collection, expandExp, sorting, projection) {
+	function dbQuery (collection, expandExp, sorting, projection) {
 		var dataAccess = backEnd.data(collection),
 			query = new Everlive.Query();
 
@@ -41,9 +37,7 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 		return $q.when(dataAccess.expand(expandExp || {}).get(query))
 			.then(function (response) {
 				return response.result;
-			}, function (err) {
-				console.log(err);
-			});
+			}, $log.error);
 	}
 
 	function getById (collection, id, expandExp) {
@@ -53,14 +47,12 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 
 		return $q.when(dataAccess).then(function (response) {
 			return response.result;
-		}, function (err) {
-			console.log(err);
-		});
+		}, $log.error);
 	}
 
 	function getDataAccessObj (collectionName) {
 		return {
-			query: query.bind(null, collectionName),
+			query: dbQuery.bind(null, collectionName),
 			getById: getById.bind(null, collectionName)
 		};
 	}
@@ -69,7 +61,6 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 		activities: getDataAccessObj('Activities'),
 		users: getDataAccessObj('Users'),
 		files: getDataAccessObj('Files'),
-		processResponsiveImage: exposableProcessor,
-		getFileUri: getFileUri
+		processResponsiveImage: exposableProcessor
 	};
 }]);

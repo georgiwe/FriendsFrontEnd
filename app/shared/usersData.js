@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('Friends').service('usersData', ['backendServices', function (backendServices) {
-
 	function getAll () {
 		var projection = ['DisplayName', 'Username', 'Picture'],
 			sorting = { field: 'DisplayName' };
