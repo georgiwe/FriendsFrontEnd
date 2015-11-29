@@ -3,6 +3,7 @@
 angular.module('Friends', ['ui.router'])
 	.constant('API_KEY', 'DMcljujfrykFryWB')
 	.constant('LOADER_URL', '../assets/images/loader.gif')
+	.constant('MISSING_IMAGE_URL', '../assets/images/no-image.jpg')
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/');
 

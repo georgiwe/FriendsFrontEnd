@@ -31,7 +31,8 @@ angular.module('Friends').service('usersData', ['$q', 'backendServices', functio
 			}
 		};
 
-		return $q.when(backendServices.users.expand(expandExp).getById(userId))
+		return $q.when(backendServices.users.expand(expandExp)
+			.getById(userId))
 			.then(function (response) {
 				return response.result;
 			});

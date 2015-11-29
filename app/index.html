@@ -6,6 +6,7 @@
 		
 		<title>Friends</title>
 
+		<!-- build:css css/all.css -->
 		<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
 		<link rel="stylesheet" href="../assets/css/themes/journal.min.css" />
 		
@@ -14,14 +15,15 @@
 		<link rel="stylesheet" href="../assets/css/activities.css">
 		<link rel="stylesheet" href="../assets/css/users.css">
 		<link rel="stylesheet" href="../assets/css/user.css">
+		<!-- endbuild -->
 	</head>
 
 	<body ng-app="Friends">
-
-		<script src="../bower_components/angular/angular.js"></script>
+		<script src="../bower_components/angular/angular.min.js"></script>
 		<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-		<script src="../bower_components/everlive/src/everlive.all.js"></script>
+		<script src="../bower_components/everlive/min/everlive.all.min.js"></script>
 
+		<!-- build:js js/body.js -->
 		<script src="app/app.js"></script>
 
 		<script src="app/shared/concatFilter.js"></script>
@@ -37,6 +39,7 @@
 		<script src="app/users/usersData.js"></script>
 
 		<script src="app/user/userCtrl.js"></script>
+		<!-- endbuild -->
 
 		<nav id="navigation-pills" class="container" ng-include="'app/navbar/navbar.html'"></nav>
 		<section data-ui-view id="view-container" class="container"></section>

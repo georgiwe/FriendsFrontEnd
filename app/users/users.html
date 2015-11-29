@@ -7,7 +7,7 @@
 		<li class="list-group-item" data-ng-repeat="user in users" data-ui-sref="user({ id: user.Id })">
 
 			<article class="user">
-				<img class="profile-image" data-meta-id="{{user.Picture}}" data-responsive data-loading-image alt="Activity picture" />
+				<img class="profile-image" data-meta-id="{{user.Picture}}" data-responsive data-loading-image errorImage alt="Activity picture" />
 
 				<section>
 					<h4 class="list-group-item-heading">{{user.Username}}</h4>
