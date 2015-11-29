@@ -1,5 +1,6 @@
 TODO: 
 
+- check what happens if expandExp or projection or sorting are missing
 - responsiveImg directive dependson BES
 - extract common data expressions to backendServices.js?
 - turn on caching

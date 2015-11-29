@@ -22,7 +22,7 @@
 	<body ng-app="Friends">
 		<script src="../bower_components/angular/angular.min.js"></script>
 		<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-		<script src="../bower_components/everlive/min/everlive.all.min.js"></script>
+		<script src="../bower_components/everlive/src/everlive.all.js"></script>
 
 		<!-- build:js js/combined.js -->
 		<script src="app.js"></script>
@@ -30,6 +30,7 @@
 		<script src="shared/concatFilter.js"></script>
 		<script src="shared/responsiveImg.js"></script>
 		<script src="shared/backendServices.js"></script>
+		<script src="shared/usersData.js"></script>
 
 		<script src="home/homeCtrl.js"></script>
 
@@ -37,12 +38,11 @@
 		<script src="activities/activitiesData.js"></script>
 
 		<script src="users/usersCtrl.js"></script>
-		<script src="users/usersData.js"></script>
 
 		<script src="user/userCtrl.js"></script>
 		<!-- endbuild -->
 
-		<nav id="navigation-pills" class="container" ng-include="'navbar/navbar.html'"></nav>
+		<nav id="navigation-pills" class="container" data-ng-include="'navbar/navbar.html'"></nav>
 		<section data-ui-view id="view-container" class="container"></section>
 
 	</body>
