@@ -12,9 +12,9 @@ angular.module('Friends').directive('responsive', ['backendServices', function (
 					return;
 				}
 
-				backendServices.files.getById(attrs.metaId).then(function (response) {
+				backendServices.files.getById(attrs.metaId).then(function (fileMeta) {
 					if (!cancelResponsiveCall) {
-						element.attr('data-src', response.result.Uri);
+						element.attr('data-src', fileMeta.Uri);
 						backendServices.processResponsiveImage(element);
 					}
 				});

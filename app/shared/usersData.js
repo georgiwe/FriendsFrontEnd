@@ -1,19 +1,12 @@
 'use strict';
 
-angular.module('Friends').service('usersData', ['$q', 'backendServices', function ($q, backendServices) {
+angular.module('Friends').service('usersData', ['backendServices', function (backendServices) {
 
 	function getAll () {
-		// var query = new backendServices.Query()
-		// 		.order('DisplayName')
-		// 		.select('DisplayName', 'Username', 'Picture');
-
-		// var request = backendServices.users.get(query);
-
-		// return $q.when(request).then(function (response) {
-		// 	return response.result;
-		// });
-
-		return backendServices.queryUsers(null, { field: 'DisplayName' }, ['DisplayName', 'Username', 'Picture']);
+		var projection = ['DisplayName', 'Username', 'Picture'],
+			sorting = { field: 'DisplayName' };
+			
+		return backendServices.users.query(null, sorting, projection);
 	}
 
 	function getById (userId) {
@@ -33,13 +26,7 @@ angular.module('Friends').service('usersData', ['$q', 'backendServices', functio
 			}
 		};
 
-		return backendServices.queryUsers(expandExp);
-
-		// return $q.when(backendServices.users.expand(expandExp)
-		// 	.getById(userId))
-		// 	.then(function (response) {
-		// 		return response.result;
-		// 	});
+		return backendServices.users.getById(userId, expandExp);
 	}
 
 	return {

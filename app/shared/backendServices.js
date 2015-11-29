@@ -14,10 +14,7 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 	});
 
 	var htmlHelper = backEnd.helpers.html,
-		exposableProcessor = htmlHelper.process.bind(backEnd.helpers.html),
-		activities = backEnd.data('Activities'),
-		users = backEnd.data('Users'),
-		files = backEnd.data('Files');
+		exposableProcessor = htmlHelper.process.bind(backEnd.helpers.html);
 
 	function getFileUri (fileId) {
 		return backEnd.Files.getDownloadUrl(fileId);
@@ -38,9 +35,10 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 			query.select(projection);
 		}
 
-		// expandExp = expandExp || {};
-		
-		return $q.when(dataAccess.expand(expandExp).get(query))
+		// wrapping the promise of the SDK in a $q promise
+		// in order to avoid having to call $scope.$apply(),
+		// when querying in a controller
+		return $q.when(dataAccess.expand(expandExp || {}).get(query))
 			.then(function (response) {
 				return response.result;
 			}, function (err) {
@@ -48,11 +46,29 @@ angular.module('Friends').service('backendServices', ['$q', 'API_KEY', 'LOADER_U
 			});
 	}
 
+	function getById (collection, id, expandExp) {
+		var dataAccess = backEnd.data(collection)
+			.expand(expandExp || {})
+			.getById(id);
+
+		return $q.when(dataAccess).then(function (response) {
+			return response.result;
+		}, function (err) {
+			console.log(err);
+		});
+	}
+
+	function getDataAccessObj (collectionName) {
+		return {
+			query: query.bind(null, collectionName),
+			getById: getById.bind(null, collectionName)
+		};
+	}
+
 	return {
-		queryActivities: query.bind(null, 'Activities'),
-		queryUsers: query.bind(null, 'Users'),
-		files: files,
-		Query: Everlive.Query,
+		activities: getDataAccessObj('Activities'),
+		users: getDataAccessObj('Users'),
+		files: getDataAccessObj('Files'),
 		processResponsiveImage: exposableProcessor,
 		getFileUri: getFileUri
 	};
