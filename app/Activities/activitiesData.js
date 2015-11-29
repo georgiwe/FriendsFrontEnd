@@ -3,29 +3,29 @@
 angular.module('Friends').service('activitiesData', ['$q', 'backendServices', function ($q, backendServices) {
 	
 	function getAll () {
-		var defered = $q.defer(),
-			query = new backendServices.Query().orderDesc('CreatedAt'),
-			expandExp = {
-				'Picture': { 'SingleField': 'Uri' },
+		var query = new backendServices.Query()
+				.orderDesc('CreatedAt')
+				.select('Text', 'Likes', 'Picture', 'CreatedBy', 'CreatedAt');
+
+		var expandExp = {
 				'CreatedBy': { 'SingleField': 'DisplayName' },
 				'Likes': { 'SingleField': 'DisplayName' }
 			};
 
-		backendServices.activities
+		var request = backendServices.activities
 			.expand(expandExp)
-			.get(query)
-			.then(function (response) {
-				defered.resolve(response.result);
-			});
+			.get(query);
 
 		// wrapping the promise of the SDK in a $q promise
 		// in order to avoid having to call $scope.$apply(),
 		// when querying in a controller
-		return defered.promise;
+
+		return $q.when(request).then(function (response) {
+			return response.result;
+		});
 	}
 
 	return {
 		getAll: getAll
 	};
-
 }]);

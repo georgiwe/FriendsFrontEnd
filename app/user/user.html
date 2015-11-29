@@ -1,0 +1,26 @@
+<section id="user-profile-wrapper">
+	
+	<h1>User Profile</h1>
+
+	<img data-ng-if="!user" class="spinner" src="../assets/images/loader.gif" alt="Loading spinner" />
+
+	<article id="user-profile" data-ng-if="user">
+		<header>
+			<img data-meta-id="{{user.Picture}}" data-responsive data-loading-image alt="User profile photo" />
+			<h3>{{user.DisplayName}}</h3>
+		</header>
+
+		<section class="user-likes">
+			<h4>Likes:</h4>
+
+			<dl class="likes-list">
+				<div class="user-like" data-ng-repeat="like in user.Likes">
+					<dt class="user-like-text text-default">{{like.Text}}</dt>
+					<dd class="user-like-author text-info">by {{like.CreatedBy}}</dd>
+				</div>
+			</dl>			
+		</section>
+		
+	</article>
+
+</section>

@@ -2,12 +2,12 @@
 	<h1>Activities</h1>
 
 	<ul class="list-group">
-		<li data-ng-if="!activities"><img class="spinner" alt="Loading spinner" src="../assets/images/loader.gif" /></li>
+		<li data-ng-hide="activities"><img class="spinner" alt="Loading spinner" src="../assets/images/loader.gif" /></li>
 
 		<li class="list-group-item" data-ng-repeat="activity in activities">
 
 			<article class="activity">
-				<img class="col-md-3" data-src="{{activity.Picture}}" alt="Activity picture" data-responsive data-loading-image />
+				<img class="col-md-3" data-meta-id="{{activity.Picture}}" alt="Activity picture" data-responsive data-loading-image />
 
 				<section class="col-md-9">
 					<h4 class="list-group-item-heading">{{activity.Text}}</h4>

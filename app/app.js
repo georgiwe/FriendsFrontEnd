@@ -28,7 +28,12 @@ angular.module('Friends', ['ui.router'])
 			.state('user', {
 				url: '/user/:id',
 				templateUrl: 'app/user/user.html',
-				controller: 'UserCtrl'
+				controller: 'UserCtrl',
+				resolve: {
+					userId: ['$stateParams', function ($stateParams) {
+						return $stateParams.id;
+					}]
+				}
 			});
 	}]);
 

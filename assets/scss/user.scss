@@ -1,0 +1,20 @@
+@import '_base';
+
+#user-profile-wrapper {
+	#user-profile {
+		.user-like {
+			padding: 5px 10px;
+			margin-bottom: 5px;
+			@include border-radius(5px);
+			@include box-shadow(0 0 10px #ccc);
+
+			&:hover {
+				background-color: #eee;
+			}
+
+			.user-like-author {
+				text-align: right;
+			}
+		}
+	}
+}

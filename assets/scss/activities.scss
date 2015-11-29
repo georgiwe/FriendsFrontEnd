@@ -17,21 +17,6 @@
 			position: absolute;
 			bottom: 10px;
 			right: 15px;
-
-			.author-name {
-			}
 		}
-	}
-
-	.list-group-item {
-		margin-bottom: 10px;
-
-		&:hover {
-			background-color: #f5f5f5;
-		}
-	}
-
-	.spinner {
-		@extend .center-horizontally;
 	}
 }

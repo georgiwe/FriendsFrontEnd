@@ -1,13 +1,28 @@
 @import '_base';
 
 body {
+	padding: 20px;
 	cursor: default;
+
+	ul {
+		list-style-type: none;
+	}
 }
 
 #navigation-pills {
 	margin-bottom: 20px;
 }
 
-ul {
-	list-style-type: none;
+.list-group-item {
+	margin-bottom: 10px;
+
+	&:hover {
+		background-color: #f5f5f5;
+	}
+}
+
+.spinner {
+	width: 400px;
+	height: 300px;
+	@extend .center-horizontally;
 }

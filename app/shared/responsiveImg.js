@@ -4,15 +4,28 @@ angular.module('Friends').directive('responsive', ['backendServices', function (
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
+			var cancelResponsiveCall = false;
+			element.css('visibility', 'hidden');
+
+			function getUriAndMakeResponsive (newValue) {
+				if (!newValue) {
+					return;
+				}
+
+				backendServices.files.getById(attrs.metaId).then(function (response) {
+					if (!cancelResponsiveCall) {
+						element.attr('data-src', response.result.Uri);
+						backendServices.processResponsiveImage(element);
+					}
+				});
+			}
+
 			scope.$watch(function () {
-				return attrs.dataSrc;
-			}, function () {
-				backendServices
-					.processResponsiveImage(element)
-					.then(function (result) {
-						result.processed[0].dataset.offline = false;
-						result.processed[0].dataset.responsive = false;
-					});
+				return attrs.metaId;
+			}, getUriAndMakeResponsive);
+
+			scope.$on('$destroy', function () {
+				cancelResponsiveCall = true;
 			});
 		}
 	};
