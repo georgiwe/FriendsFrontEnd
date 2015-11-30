@@ -3,6 +3,7 @@
 ####Dependencies:
 - Node.js, npm
 - Gulp, installed globally (locally it's installed through "npm install")
+- bower
 
 ####Deploy instructions:
 - Executing "npm start" will install npm and bower dependencies, build and launch a simple static server. Application should be available on localhost:3000
