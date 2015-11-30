@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Friends').service('activitiesData', ['$q', 'backendServices', function ($q, backendServices) {
+angular.module('Friends').service('activitiesData', ['backendServices', function (backendServices) {
 	function getAll () {
 		var projection = ['Text', 'Likes', 'Picture', 'CreatedBy', 'CreatedAt'],
 			sort = {
