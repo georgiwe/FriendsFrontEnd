@@ -1,13 +1,10 @@
-TODO: 
+Installation instructions
 
-- check what happens if expandExp or projection or sorting are missing
-- responsiveImg directive dependson BES
-- extract common data expressions to backendServices.js?
-- turn on caching
-- maybe organise "shared" folder into subfolders
-- notifications
-- error handling
+Dependencies:
+- Node.js, npm
+- Gulp, installed globally (locally it's installed through "npm install")
 
-release checklist:
+Deploy instructions:
+- Executing "npm start" will install npm and bower dependencies, build and launch a simple static server. Application should be available on localhost:3000
 
-- all minified (gulp or no gulp)
+- Separate Gulp tasks include "gulp dev" (default task), "gulp build" and "gulp mockdeploy" (builds and starts the server)

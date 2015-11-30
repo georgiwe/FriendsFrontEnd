@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('Friends').service('backendServices', ['$q', '$log', 'API_KEY', 'LOADER_URL', 'MISSING_IMAGE_URL', function ($q, $log, API_KEY, LOADER_URL, MISSING_IMAGE_URL) {
+angular.module('Friends').service('backendServices', ['$q', 'toastr', 'API_KEY', 'LOADER_URL', 'MISSING_IMAGE_URL', function ($q, toastr, API_KEY, LOADER_URL, MISSING_IMAGE_URL) {
 	var backEnd = new Everlive({
 		apiKey: API_KEY,
-		caching: false,
 		helpers: {
 			html: {
 				processOnResize: true, // to easily notice images are responsive
@@ -14,7 +13,8 @@ angular.module('Friends').service('backendServices', ['$q', '$log', 'API_KEY', '
 	});
 
 	var htmlHelper = backEnd.helpers.html,
-		exposableProcessor = htmlHelper.process.bind(backEnd.helpers.html);
+		exposableProcessor = htmlHelper.process.bind(backEnd.helpers.html),
+		ERROR_MSG = 'Sorry, something went wrong.';
 
 	function dbQuery (collection, expandExp, sorting, projection) {
 		var dataAccess = backEnd.data(collection),
@@ -37,17 +37,24 @@ angular.module('Friends').service('backendServices', ['$q', '$log', 'API_KEY', '
 		return $q.when(dataAccess.expand(expandExp || {}).get(query))
 			.then(function (response) {
 				return response.result;
-			}, $log.error);
+			})
+			.catch(function () {
+				toastr.error(ERROR_MSG, 'Error');
+			});
 	}
 
 	function getById (collection, id, expandExp) {
-		var dataAccess = backEnd.data(collection)
+		var query = backEnd.data(collection)
 			.expand(expandExp || {})
 			.getById(id);
 
-		return $q.when(dataAccess).then(function (response) {
-			return response.result;
-		}, $log.error);
+		return $q.when(query)
+			.then(function (response) {
+				return response.result;
+			})
+			.catch(function () {
+				toastr.error(ERROR_MSG, 'Error');
+			});
 	}
 
 	function getDataAccessObj (collectionName) {

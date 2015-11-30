@@ -6,11 +6,10 @@
 		
 		<title>Friends</title>
 
-		<link rel="stylesheet" href="../assets/css/themes/journal.min.css" />
-
 		<!-- build:css css/combined.css -->
+		<link rel="stylesheet" href="../bower_components/angular-toastr/dist/angular-toastr.min.css">
 		<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
-		
+		<link rel="stylesheet" href="../assets/css/themes/journal.min.css" />
 		<link rel="stylesheet" href="../assets/css/app.css">
 		<link rel="stylesheet" href="../assets/css/home.css">
 		<link rel="stylesheet" href="../assets/css/activities.css">
@@ -19,13 +18,18 @@
 		<!-- endbuild -->
 	</head>
 
-	<body ng-app="Friends">
+	<body data-ng-app="Friends">
+		<nav id="navigation-pills" class="container" data-ng-include="'navbar/navbar.html'"></nav>
+		<section id="view-container" class="container" data-ui-view data-ng-cloak ></section>
+
 		<script src="../bower_components/angular/angular.min.js"></script>
 		<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-		<script src="../bower_components/everlive/src/everlive.all.js"></script>
+		<script src="../bower_components/everlive/min/everlive.all.min.js"></script>
+		<script src="../bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
 
 		<!-- build:js js/combined.js -->
 		<script src="app.js"></script>
+		<script src="app.routing.js"></script>
 
 		<script src="shared/concatFilter.js"></script>
 		<script src="shared/responsiveImg.js"></script>
@@ -41,9 +45,5 @@
 
 		<script src="user/userCtrl.js"></script>
 		<!-- endbuild -->
-
-		<nav id="navigation-pills" class="container" data-ng-include="'navbar/navbar.html'"></nav>
-		<section data-ui-view id="view-container" class="container"></section>
-
 	</body>
 </html>

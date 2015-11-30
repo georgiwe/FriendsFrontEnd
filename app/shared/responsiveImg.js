@@ -4,7 +4,10 @@ angular.module('Friends').directive('responsive', ['backendServices', function (
 	return {
 		restrict: 'A',
 		link: function (scope, element, attrs) {
+			// fixes 404 errors coming from navigating out of the page
+			// before the image processing has finished
 			var cancelResponsiveCall = false;
+			// processing the element makes it visible again
 			element.css('visibility', 'hidden');
 
 			function getUriAndMakeResponsive (newValue) {

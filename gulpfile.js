@@ -20,7 +20,7 @@ var paths = {
 	cssFiles: 'assets/css/{*,**/*}.css',
 
 	cssDir: 'assets/css',
-	dirsToCopyOnBuild: [ 'assets', 'bower_components' ],
+	dirsToCopyOnBuild: [ 'assets/images', 'bower_components' ],
 	buildDir: 'build/'
 };
 

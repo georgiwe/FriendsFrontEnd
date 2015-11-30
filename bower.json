@@ -12,6 +12,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.8",
+    "angular-toastr": "~1.6.0",
     "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.6",
     "everlive": "~1.5.8",

@@ -2,19 +2,19 @@
 	<h1>Users</h1>
 
 	<ul class="list-group">
-		<li data-ng-if="!users"><img class="spinner" alt="Loading spinner" src="../assets/images/loader.gif" /></li>
+		<li data-ng-if="!users">
+			<img class="spinner" alt="Loading spinner" src="../assets/images/loader.gif" />
+		</li>
 
 		<li class="list-group-item" data-ng-repeat="user in users" data-ui-sref="user({ id: user.Id })">
-
 			<article class="user">
-				<img class="profile-image" data-meta-id="{{user.Picture}}" data-responsive data-loading-image errorImage alt="Activity picture" />
+				<img class="profile-image" alt="Activity picture" data-meta-id="{{user.Picture}}" data-responsive data-loading-image data-errorImage />
 
 				<section>
 					<h4 class="list-group-item-heading">{{user.Username}}</h4>
 					<h5>{{user.DisplayName}}</h5>
 				</section>
 			</article>
-
 		</li>
 	</ul>
 </section>
