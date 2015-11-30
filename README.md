@@ -1,4 +1,4 @@
-Installation instructions
+#Installation instructions
 
 Dependencies:
 - Node.js, npm
