@@ -13,7 +13,7 @@ angular.module('Friends').service('backendServices', ['$q', 'toastr', 'API_KEY',
 	});
 
 	var htmlHelper = backEnd.helpers.html,
-		exposableProcessor = htmlHelper.process.bind(backEnd.helpers.html),
+		exposableProcessor = htmlHelper.process.bind(htmlHelper),
 		ERROR_MSG = 'Sorry, something went wrong.';
 
 	function dbQuery (collection, expandExp, sorting, projection) {
